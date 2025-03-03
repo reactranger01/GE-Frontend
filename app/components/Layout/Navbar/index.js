@@ -1,0 +1,227 @@
+/* eslint-disable no-unused-vars */
+import React, { useState, useRef } from 'react';
+import { FaSearchPlus } from 'react-icons/fa';
+import { X, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+const Navbar = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isBalancePopupOpen, setIsBalancePopupOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate();
+
+  const profileOptions = [
+    'Profile Settings',
+    'Account History',
+    'Change Password',
+    'Logout',
+  ];
+
+  const navItems = [
+    { name: 'HOME', path: '/' },
+    { name: 'CRICKET', path: '/cricket-nav' },
+    { name: 'FOOTBALL', path: '/cricket-nav' },
+    { name: 'TENNIS', path: '/cricket-nav' },
+    { name: 'CASINO', path: '/cricket-nav' },
+    { name: 'INT CASINO', path: '/cricket-nav' },
+    { name: 'SPORTS BOOK', path: '/cricket-nav' },
+    { name: 'HORSE RACING', path: '/cricket-nav' },
+    { name: 'GREYHOUND RACING', path: '/cricket-nav' },
+    { name: 'BINARY', path: '/cricket-nav' },
+    { name: 'KABADDI', path: '/cricket-nav' },
+    { name: 'POLITICS', path: '/cricket-nav' },
+    { name: 'BASKETBALL', path: '/cricket-nav' },
+    { name: 'BASEBALL', path: '/cricket-nav' },
+    { name: 'TABLE TENNIS', path: '/cricket-nav' },
+  ];
+
+  const scrollRef = useRef(null);
+
+  const handleClick = (item) => {
+    console.log('Clicked Item:', item.name);
+    setSelectedItem(item.name); // Set selected item name
+
+    // Store the selected item in localStorage so it can be accessed from other components
+    localStorage.setItem('selectedNavItem', item.name);
+
+    navigate(item.path); // Navigate to path
+  };
+  // Handle mouse dragging for scrolling
+  const handleMouseDown = (e) => {
+    const slider = scrollRef.current;
+    let startX = e.pageX - slider.offsetLeft;
+    let scrollLeft = slider.scrollLeft;
+
+    const handleMouseMove = (event) => {
+      const x = event.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // Adjust speed
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+  };
+
+  return (
+    <div className="w-full relative">
+      {/* Top Bar */}
+      <div className="bg-black w-full flex pl-2 pr-2 pt-2">
+        {/* Logo Section (40%) */}
+        <div className="w-[35%]">
+          <img
+            src="/images/logo.png"
+            alt="Gold365"
+            className="h-[5vw] w-[22vw] object-contain cursor-pointer"
+            onClick={() => navigate('/')}
+          />
+        </div>
+
+        {/* Right Section (60%) */}
+        <div className="w-[65%] flex flex-col mt-2">
+          {/* Top Row with Controls */}
+          <div className="flex items-center justify-end gap-2">
+            {/* Deposit Button */}
+            <a
+              href="/deposit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 bg-green-600 text-white px-[1vw] py-[0.5vw] rounded border border-white text-[0.8vw] hover:bg-green-700 whitespace-nowrap"
+            >
+              <img
+                src="/images/deposit-icon.webp"
+                alt="deposit-icon"
+                className="w-[2vw] h-[2vw]"
+              />
+              <span className="font-bold text-[1vw]">DEPOSIT</span>
+            </a>
+
+            {/* Withdraw Button */}
+            <a
+              href="/withdraw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 bg-red-600 text-white px-[1vw] py-[0.5vw] rounded border border-white text-[0.8vw] hover:bg-red-700 whitespace-nowrap"
+            >
+              <img
+                src="/images/withdrawal-icon.webp"
+                alt="withdraw-icon"
+                className="w-[2vw] h-[2vw]"
+              />
+              <span className="font-bold text-[1vw]">WITHDRAWAL</span>
+            </a>
+
+            {/* Search Bar */}
+            <div className="flex items-center gap-2 relative">
+              <div
+                className={`overflow-hidden transition-[width] duration-500 ease-in-out bg-white shadow-md ${
+                  isSearchOpen ? 'w-[20vw] px-2 py-1' : 'w-0 px-0 py-0'
+                }`}
+              >
+                <input
+                  type="text"
+                  placeholder="All Events"
+                  className="bg-white text-gray-950 outline-none w-full transition-opacity duration-300 ease-in-out"
+                  style={{ opacity: isSearchOpen ? 1 : 0 }}
+                  autoFocus
+                />
+              </div>
+              <FaSearchPlus
+                className="text-white w-[2vw] h-[2vw] cursor-pointer"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              />
+            </div>
+
+            {/* Rules Link */}
+            <a
+              href="/rules"
+              className="text-white text-0.8vw hover:text-gray-300 whitespace-nowrap"
+            >
+              Rules
+            </a>
+
+            {/* Balance Button */}
+            <button
+              onClick={() => setIsBalancePopupOpen(true)}
+              className="text-white text-0.8vw hover:text-gray-300 whitespace-nowrap leading-none"
+            >
+              Balance: 0.00
+              <br />
+              <span className="underline">Exposure: 0</span>
+            </button>
+
+            {/* Profile Dropdown */}
+            <div className="relative group">
+              <button className="text-white text-0.8vw flex items-center gap-1 whitespace-nowrap">
+                demo123 <ChevronDown size={16} />
+              </button>
+
+              {/* Dropdown on Hover */}
+              <div className="absolute top-full right-0 mt-2 bg-white text-black py-2 rounded shadow-lg z-50 hidden group-hover:block">
+                {profileOptions.map((option, index) => (
+                  <button
+                    key={index}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-800 text-0.8vw"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Row with Marquee */}
+          <div className="w-full text-white font-bold text-0.8vw">
+            <marquee direction="left">
+              🏏 𝐈𝐂𝐂 𝐂𝐇𝐀𝐌𝐏𝐈𝐎𝐍𝐒 𝐓𝐑𝐎𝐏𝐇𝐘 𝐂𝐔𝐏 𝐖𝐈𝐍𝐍𝐄𝐑 🏆𝐌𝐀𝐑𝐊𝐄𝐓 𝐒𝐓𝐀𝐑𝐓𝐄𝐃 𝐈𝐍 𝐎𝐔𝐑
+              𝐄𝐗𝐂𝐇𝐀𝐍𝐆𝐄 🏏 🏆𝐖𝐎𝐌𝐄𝐍 𝐏𝐑𝐄𝐌𝐈𝐄𝐑 𝐋𝐄𝐀𝐆𝐔𝐄 𝐂𝐔𝐏 𝐖𝐈𝐍𝐍𝐄𝐑🏆 𝐌𝐀𝐑𝐊𝐄𝐓 𝐒𝐓𝐀𝐑𝐓𝐄𝐃 𝐈𝐍
+              𝐎𝐔𝐑 𝐄𝐗𝐂𝐇𝐀𝐍𝐆𝐄🏆 𝐎𝐔𝐑 𝐄𝐗𝐂𝐋𝐔𝐒𝐈𝐕𝐄 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 𝐌𝐀𝐑𝐊𝐄𝐓 𝐅𝐎𝐑 (𝐒𝐑𝐋) 𝐈𝐒 𝐍𝐎𝐖
+              𝐒𝐓𝐀𝐑𝐓𝐄𝐃 𝐈𝐍 𝐎𝐔𝐑 𝐄𝐗𝐂𝐇𝐀𝐍𝐆𝐄 , 𝐃𝐑𝐄𝐀𝐌 𝐁𝐈𝐆 𝐖𝐈𝐍 𝐁𝐈𝐆 💰
+            </marquee>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Menu with Scroll */}
+      <div
+        ref={scrollRef}
+        className="bg-[#8000ff] w-full flex items-center py-[0.8vw] gap-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
+        onMouseDown={handleMouseDown}
+      >
+        {navItems.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => handleClick(item)}
+            className="relative text-white px-[1.5vw] text-[1.2vw] font-extrabold flex-1 text-center whitespace-nowrap transition-all ease-in-out
+  after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:origin-center 
+  hover:after:left-0 hover:after:w-full"
+          >
+            {item.name}
+          </button>
+        ))}
+      </div>
+      {/* Balance Popup */}
+      {isBalancePopupOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white w-[80%] h-[80%] rounded-lg relative">
+            <button
+              onClick={() => setIsBalancePopupOpen(false)}
+              className="absolute top-4 right-4"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="p-6">
+              <h2 className="text-2xl font-bold">Balance Details</h2>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Navbar;

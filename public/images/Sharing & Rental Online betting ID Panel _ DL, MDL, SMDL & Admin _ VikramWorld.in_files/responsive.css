@@ -1,0 +1,586 @@
+/*--------------------------------------------------
+    ## All responsive style
+---------------------------------------------------*/
+
+@media all and (min-width: 1600px) {
+    .container {
+        max-width: 1280px;
+    }
+    .home-3 .container {
+        max-width: 1110px;
+    }
+    .banner-inner-2 {
+        position: relative;
+        padding: 459px 0 337px 0;
+    }
+    .profit-tabs-inner.style-two li a {
+        padding: 0 30.9px;
+    }
+    .predict-table-inner .table tbody tr td .media.match-name {
+        width: 417px;
+    }
+    .predict-table-inner .table {
+        margin-bottom: -5px;
+    }
+    .predict-table-inner .tab-onthe-tab .table-list li {
+        width: 100px;
+        text-align: center;
+        margin: 0 5px;
+    }
+    .predict-table-inner .table {
+        min-width: 965px;
+    }
+    .predict-table-inner .table tbody tr td .single-td {
+        width: 100px;
+    }
+    .single-ticket-wrap::before,
+    .single-ticket-wrap::after {
+        background-position: center;
+    }
+    .single-betfor-wrap ul.info li {
+        font-size: 16px;
+    }
+    .single-betfor-wrap ul.single-match-inner .match-details {
+        padding: 0 65px;
+    }
+    .blog-details-page-content .single-blog-inner .details .progress-counter-inner .single-progress-counter {
+        margin-right: 30px;
+    }
+}
+
+@media all and (max-width: 1440px) {
+    .match-table-inner {
+        padding: 50px 50px 10px;
+    }
+    .gamer-details {
+        padding: 15px;
+    }
+    .gamer-details p {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    .gamer-details h5 {
+        margin-bottom: 10px;
+    }
+    .gamer-details .ratting-inner {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .gamer-details .btn {
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+        padding: 0 8px;
+    }
+    .plan-inner {
+        padding: 70px 40px 40px 40px;
+    }
+    .single-plan-wrap .btn {
+        padding: 0 30px;
+    }
+    .single-plan-wrap .details p {
+        color: #fff;
+        font-size: 14px;
+    }
+    .single-plan-wrap {
+        padding: 40px 30px 40px 0;
+    }
+}
+
+@media all and (max-width: 1199px) {
+    .nav-right-part .btn {
+        height: 50px;
+        line-height: 52px;
+        padding: 0 19px;
+        font-size: 14px;
+    }
+    .banner-inner .title {
+        color: #fff;
+        font-size: 50px;
+    }
+    .banner-3 .banner-inner {
+        padding: 259px 0 150px;
+    }
+    .home-3 .section-title .title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .predict-table table {
+        min-width: 1000px;
+    }
+    .single-blog-inner-2 .details h5 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .single-blog-inner-2 .details .meta li {
+        font-size: 12px;
+        margin-right: 15px;
+    }
+    .single-blog-inner-2 .details p {
+        font-size: 14px;
+    }
+    .predict-team-list li {
+        padding: 0px;
+    }
+    .predict-team-list li .media {
+        padding: 0 20px;
+    }
+    .predict-team-list li .match-time h6 {
+        font-size: 14px;
+    }
+    .predict-team-list li .match-time {
+        padding: 20px 0 35px;
+        border-radius: 25px;
+    }
+    .predict-area {
+        padding-bottom: 414px;
+    }
+    .section-title .title {
+        font-size: 45px;
+    }
+    .section-title.style-small .title {
+        font-size: 24px;
+    }
+    .profit-tabs-inner.style-two li {
+        width: 17.80%;
+    }
+    .profit-tabs-inner.style-two li:last-child {
+        width: 11%;
+    }
+    .profit-tabs-inner.style-two li a h6 {
+        font-weight: 600;
+        font-size: 12px;
+    }
+    .profit-tabs-inner.style-two li a .thumb img {
+        width: 20px;
+    }
+    .predict-table-inner .tab-onthe-tab .table-list {
+        margin: 0;
+        margin-bottom: -51px;
+        margin-top: 19px;
+    }
+    .predict-table-inner .tab-onthe-tab .nav-pills {
+        margin-bottom: 47px;
+    }
+}
+
+@media all and (max-width: 991px) {
+    .navbar {
+        padding: 0;
+    }
+    .td-sidebar {
+        margin-top: 90px;
+    }
+    .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children {
+        padding-right: 0;
+    }
+    .search-bar-btn {
+        color: #fff;
+    }
+    .banner-inner {
+        position: relative;
+        padding: 160px 0 170px 0;
+    }
+    .navbar-area .nav-container .navbar-collapse .navbar-nav {
+        padding: 10px;
+        margin: 0;
+    }
+    .footer-cta-inner {
+        padding: 45px 40px;
+    }
+    .leaderboard-table {
+        margin-bottom: 30px;
+    }
+    .about-area-3 {
+        padding-bottom: 120px;
+    }
+    .single-fact-inner-3 {
+        transform: none;
+    }
+    .fact-area-3 {
+        margin-bottom: 0px;
+        padding: 50px 0 50px;
+    }
+    .predict-area {
+        padding-bottom: 90px;
+    }
+    .single-process-wrap span {
+        display: none;
+    }
+    .process-area {
+        padding: 50px 50px 15px;
+        transform: none;
+        margin-bottom: 0;
+    }
+    .banner-3 .thumb {
+        padding-top: 200px;
+    }
+    .banner-3 .banner-inner {
+        padding: 50px 0 150px;
+        text-align: center;
+    }
+    .banner-3 .banner-inner p {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 58px;
+        text-align: center;
+    }
+    .breadcrumb-area .page-list {
+        text-align: center;
+    }
+    .single-fact-inner p {
+        font-size: 16px;
+    }
+    .single-fact-inner h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .match-table-inner {
+        padding: 30px 30px 5px;
+    }
+    .profit-tabs-inner.style-two li a h6 {
+        font-size: 14px;
+    }
+    .profit-tabs-inner.style-two li a {
+        padding: 0 12.5px;
+    }
+    .predict-table-inner .table-head .table-title {
+        font-size: 13px;
+    }
+    .profit-tabs-inner.style-two li {
+        width: 50%;
+        text-align: center;
+    }
+    .profit-tabs-inner.style-two li a {
+        margin: 0 10px 20px;
+        border-radius: 10px !important;
+    }
+    .profit-tabs-inner.style-two li:last-child a,
+    .profit-tabs-inner.style-two li:first-child a {
+        border-radius: 10px !important;
+    }
+    .single-betfor-wrap ul.info li {
+        font-size: 13px;
+    }
+    .single-betfor-wrap ul.single-match-inner {
+        padding: 5px 25px 30px;
+    }
+    .single-ticket-wrap::before,
+    .single-ticket-wrap::after {
+        background-size: auto;
+    }
+    .single-process-inner .details h4 {
+        font-size: 19px;
+    }
+    .single-process-inner .details p {
+        font-size: 13px;
+    }
+    .gamer-details {
+        padding: 30px;
+    }
+    .profit-tabs-inner.style-two li:last-child {
+        width: 50%;
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .banner-inner .title {
+        color: #fff;
+        font-size: 40px;
+        line-height: inherit;
+    }
+    .section-title .title {
+        font-size: 35px;
+    }
+    .predict-team-list li .media .thumb {
+        flex: none;
+        width: 100px;
+    }
+    .predict-team-list li .media {
+        padding: 0;
+    }
+    .predict-team-list li .media .details h4 {
+        font-size: 15px;
+    }
+    .predict-team-list li .media .details h6 {
+        font-size: 10px;
+    }
+    .predict-team-list li .match-time h6 {
+        font-size: 10px;
+        margin-bottom: 16px;
+    }
+    .predict-team-list li .match-time h2 {
+        font-size: 30px;
+    }
+    .predict-team-list li .match-time {
+        padding: 13px 0 22px;
+    }
+    .footer-cta-inner {
+        margin-bottom: -246px;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 50px;
+    }
+    .breadcrumb-area {
+        padding: 205px 0 103px;
+    }
+    .single-blog-inner .thumb img {
+        width: 100%;
+    }
+    .profit-tabs-inner li {
+        width: 32.33%;
+        margin-bottom: 15px;
+    }
+    .profit-tabs-inner li:nth-child(3) a {
+        margin-right: 0;
+    }
+    .triper-table-head {
+        font-size: 12px;
+    }
+    .profit-table-inner .table {
+        min-width: 768px;
+    }
+    .team-details-area .price-list li {
+        width: 100%;
+    }
+    .predict-table-inner .tab-onthe-tab .table-list {
+        display: none;
+    }
+    .predict-table-inner .tab-onthe-tab .nav-pills .nav-item .nav-link {
+        margin-right: 14px;
+    }
+    .predict-table-inner .tab-onthe-tab .nav-pills {
+        margin-bottom: 20px;
+    }
+    .predict-table-inner .table-head .table-logo {
+        display: none;
+    }
+    .predict-table-inner .table-head .table-title {
+        margin-bottom: 20px;
+    }
+    .single-betfor-wrap ul.info {
+        transform: none;
+        display: block;
+        margin-bottom: 20px;
+        padding: 14px 19px 20px;
+    }
+    .single-betfor-wrap {
+        padding-top: 30px;
+    }
+    .single-betfor-wrap ul.info li:last-child {
+        margin-top: 10px !important;
+    }
+    .single-betfor-wrap ul li,
+    .single-betfor-wrap ul.single-match-inner {
+        display: block;
+    }
+    .single-betfor-wrap ul li {
+        margin: 0 !important;
+    }
+    .single-betfor-wrap ul.single-match-inner .thumb {
+        margin: 20px auto;
+    }
+}
+
+@media all and (max-width: 575px) {
+    .toggle-btn {
+        top: 7px;
+    }
+    .back-to-top {
+        right: 15px;
+        bottom: 20px;
+    }
+    .photo-slider-2 {
+        padding: 0 25px;
+    }
+    .footer-cta-inner {
+        padding: 36px 40px 45px;
+        margin-bottom: -245px;
+    }
+    .footer-cta-inner .section-title .title {
+        font-size: 30px;
+        line-height: initial;
+        margin-bottom: 30px;
+    }
+    .predict-team-list li .media .thumb {
+        width: 64px;
+    }
+    .predict-team-list li .match-time h2 {
+        font-size: 24px;
+    }
+    .predict-team-list li .match-time h6 {
+        font-size: 8px;
+    }
+    .predict-team-list li .match-time .btn {
+        font-size: 12px;
+        padding: 0 20px;
+        line-height: 39px;
+    }
+    .process-area {
+        padding: 30px 20px 0px;
+    }
+    .footer-cta-inner {
+        margin-bottom: -251px;
+    }
+    .blog-tag-area ul li {
+        margin-bottom: 15px;
+    }
+    .blog-author-area {
+        display: block;
+    }
+    .blog-details-page-content .single-blog-inner .thumb {
+        display: inline-block;
+        margin: 0 0 20px 0;
+    }
+    .service-bg {
+        margin-top: -130px;
+    }
+    .single-testimonial-inner {
+        padding: 30px 10px;
+    }
+    .testimonial-slider .item {
+        padding: 50px 20px;
+    }
+    .upcoming-match-inner .middle-thumb {
+        margin: 15px 0;
+    }
+    .upcoming-match-inner {
+        text-align: center;
+    }
+    .tipster-slider .owl-nav {
+        display: none;
+    }
+    .profit-tabs-inner li a {
+        font-size: 14px;
+    }
+    .single-testimonial-inner-2 {
+        background: #F3F3F3;
+        padding: 25px 30px;
+    }
+    .single-testimonial-inner-2 .side-icon {
+        right: 30px;
+        top: 30px;
+        width: 29px !important;
+    }
+    .footer-subscribe .footer-subscribe-inner .single-subscribe-inner input {
+        height: 50px;
+    }
+    .footer-subscribe .footer-subscribe-inner .single-subscribe-inner .btn {
+        right: 0;
+        width: 100%;
+    }
+    .footer-subscribe .footer-subscribe-inner {
+        padding: 30px;
+    }
+    .contact-g-map iframe {
+        height: 370px;
+    }
+}
+
+@media all and (max-width: 375px) {
+    .service-bg {
+        padding: 90px 25px 10px;
+        margin-top: -120px;
+    }
+    .banner-inner .title {
+        font-size: 35px;
+    }
+    .section-title .title {
+        font-size: 30px;
+    }
+    .nav-right-part {
+        display: none;
+    }
+    .profit-tabs-inner li {
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .profit-tabs-inner li:nth-child(2) a,
+    .profit-tabs-inner li:nth-child(4) a {
+        margin-right: 0;
+    }
+    .predict-table-inner .table-head h6 {
+        font-size: 14px;
+    }
+    .team-details-area .price-list li {
+        font-size: 12px;
+    }
+    .predict-team-list li {
+        justify-content: center;
+        width: 100%;
+    }
+    .predict-team-list li .custom-col-4 {
+        width: max-content;
+    }
+    .predict-team-list li .media {
+        padding: 0 20px;
+    }
+    .list-responsive {
+        overflow: hidden;
+    }
+    .predict-team-list {
+        display: grid;
+        overflow: scroll;
+    }
+    .predict-team-list li .match-time {
+        padding: 13px 20px 22px;
+    }
+    .footer-cta-inner .section-title .title {
+        font-size: 24px;
+    }
+    .footer-cta-inner {
+        padding: 26px 24px 35px;
+    }
+    .blog-details-page-content .single-blog-inner .details .progress-counter-inner {
+        display: inline-block;
+    }
+    .profit-tabs-inner.style-two li:last-child,
+    .profit-tabs-inner.style-two li {
+        width: 100%;
+    }
+    .profit-tabs-inner.style-two li a {
+        margin: 0 0 10px;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .service-bg {
+        padding: 90px 25px 10px;
+        margin-top: -120px;
+    }
+    .banner-inner .title {
+        font-size: 35px;
+    }
+    .section-title .title {
+        font-size: 30px;
+    }
+    .nav-right-part {
+        display: none;
+    }
+    .profit-tabs-inner li {
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .profit-tabs-inner li:nth-child(2) a,
+    .profit-tabs-inner li:nth-child(4) a {
+        margin-right: 0;
+    }
+    .predict-table-inner .table-head h6 {
+        font-size: 14px;
+    }
+    .team-details-area .price-list li {
+        font-size: 12px;
+    }
+    .match-table-inner {
+        padding: 20px 20px 5px;
+    }
+    .single-betfor-wrap-2 {
+        display: block;
+    }
+    .single-betfor-wrap-2 li.match-time {
+        margin: 20px 0;
+    }
+}
