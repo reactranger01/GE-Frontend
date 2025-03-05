@@ -25,7 +25,10 @@ const OuterOdds = ({
             <SportIcon sport={sport} />
           </div>
           <div className="flex items-center gap-4 hover:underline cursor-pointer">
-            <div className="font-medium truncate text-black">
+            <div
+              onClick={() => navigate(`/${sport}-market/${data?.event_id}`)}
+              className="font-medium truncate text-black"
+            >
               {data?.runners?.[0]?.runnerName || ''} V{' '}
               {data?.runners?.[1]?.runnerName || ''}
             </div>

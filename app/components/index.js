@@ -14,3 +14,21 @@ export { default as DisableButton } from './DisableButton';
 export const Welcome = loadable(() => import('./Welcome'), {
   fallback: <Loading />,
 });
+export const MatchOddsCricket = loadable(
+  () => import('./Cricket/InnerMarketCricket/MatchOddsCricket'),
+  {
+    fallback: <Loading />,
+  },
+);
+export const BookmakersCricket = loadable(
+  () => import('./Cricket/InnerMarketCricket/BookmakersCricket'),
+  {
+    fallback: <Loading />,
+  },
+);
+export const SessionsCricket = loadable(
+  () => import('./Cricket/InnerMarketCricket/SessionsCricket'),
+  {
+    fallback: <Loading />,
+  },
+);

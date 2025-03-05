@@ -6,46 +6,34 @@ import Premium from '@/components/Cricket/Premium';
 import TopComponent from '@/components/Cricket/TopComponent';
 import Sessions from '@/components/Cricket/Sessions';
 import RightTopComponent from '@/components/Cricket/RightTopComponent';
+import {
+  BookmakersCricket,
+  MatchOddsCricket,
+  SessionsCricket,
+} from '@/components';
+import useCricketInner from '@/hooks/useCricketInner';
+import dayjs from 'dayjs';
 
 const CricketMarket = () => {
+  const {
+    // isLogin,
+    oddsData,
+    matchData,
+    particularMatchData,
+    sessionBooksetClcuData,
+    sessionData,
+    placedBetWinLossBookmakerData,
+    bookmakerData,
+    bookmakerTransformData,
+    placedBetWinLossDatas,
+  } = useCricketInner();
+  console.log(oddsData, 'oddsDataoddsData');
   const gameInfo = {
     game: 'India vs Australia',
     dateTime: 'March 20, 2025 - 7:00 PM',
   };
 
-  const gameOdds = { odd: 'Match Odds' };
-  const gameToss = { odd: 'Toss' };
-  const gameBookmaker = { odd: 'BOOKMAKER' };
   const gamePredication = { odd: 'Who will Win the Match?' };
-
-  const matchData = [
-    {
-      name: 'Pakistan',
-      backOdds: [
-        { value: '2.62', stakes: '16462.2' },
-        { value: '2.64', stakes: '7.66' },
-        { value: '2.66', stakes: '2964.14' },
-      ],
-      layOdds: [
-        { value: '2.7', stakes: '1732.44' },
-        { value: '2.74', stakes: '9.45' },
-        { value: '2.76', stakes: '3396.21' },
-      ],
-    },
-    {
-      name: 'South Africa',
-      backOdds: [
-        { value: '1.56', stakes: '146.73' },
-        { value: '1.57', stakes: '5841.12' },
-        { value: '1.59', stakes: '2941.87' },
-      ],
-      layOdds: [
-        { value: '1.6', stakes: '4803.17' },
-        { value: '1.61', stakes: '16741.52' },
-        { value: '1.62', stakes: '10157.64' },
-      ],
-    },
-  ];
 
   const premiumData = [
     {
@@ -150,33 +138,58 @@ const CricketMarket = () => {
       max: '25000',
     },
   ];
+  console.log(oddsData, 'hgvgf');
 
+  const dateTime = dayjs(oddsData?.matchDateTime).format(
+    'MMMM DD YYYY - hh:mm:a',
+  );
   return (
     <div className="flex w-full">
-      {/* Main Content - 60% width */}
       <div className="w-[70%] pt-2 ml-1">
         <div className="space-y-4">
-          <TopComponent game={gameInfo.game} dateTime={gameInfo.dateTime} />
+          <TopComponent game={oddsData?.name} dateTime={dateTime} />
 
-          {/* Match Odds Section */}
           <div className="space-y-2">
-            <MatchOdd game={gameOdds.odd} cashout="CashOut" />
-            <BettingOdds minValue={100} maxValue={2000} matchData={matchData} />
+            <MatchOdd game="Match Odds" cashout="CashOut" />
+
+            <MatchOddsCricket
+              heading="MATCH ODDS"
+              data={oddsData}
+              competition_name={matchData?.competition_name}
+              placedBetWinLossDatas={placedBetWinLossDatas}
+            />
           </div>
 
-          {/* Bookmaker Section */}
           <div className="space-y-2">
-            <MatchOdd game={gameBookmaker.odd} cashout="CashOut" />
-            <BettingOdds minValue={100} maxValue={2000} matchData={matchData} />
+            <MatchOdd game="Bookmakers" cashout="CashOut" />
+            {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
+            <BookmakersCricket
+              heading="BOOKMAKERS"
+              data={{
+                ...bookmakerTransformData,
+                market_id: oddsData?.market_id,
+                noData: bookmakerData ? false : true,
+              }}
+              competition_name={matchData?.competition_name}
+              placedBetWinLossBookmakerData={placedBetWinLossBookmakerData}
+              oddsData={oddsData}
+              matchName={matchData?.name}
+            />
           </div>
 
-          {/* Toss Section */}
           <div className="space-y-2">
-            <MatchOdd game={gameToss.odd} cashout="CashOut" />
-            <BettingOdds minValue={100} maxValue={2000} matchData={matchData} />
+            <MatchOdd game="Sessions" cashout="CashOut" />
+            {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
+            <SessionsCricket
+              sessionBooksetClcuData={sessionBooksetClcuData}
+              data={sessionData}
+              matchName={matchData?.name}
+              particularMatchData={particularMatchData}
+              competition_name={matchData?.competition_name}
+              oddsData={oddsData}
+            />
           </div>
 
-          {/* Prediction Section */}
           <div className="space-y-2">
             <MatchOdd game={gamePredication.odd} />
             <Prediction

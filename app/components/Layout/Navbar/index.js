@@ -19,34 +19,29 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'HOME', path: '/' },
-    { name: 'CRICKET', path: '/cricket-nav' },
-    { name: 'FOOTBALL', path: '/cricket-nav' },
-    { name: 'TENNIS', path: '/cricket-nav' },
-    { name: 'CASINO', path: '/cricket-nav' },
-    { name: 'INT CASINO', path: '/cricket-nav' },
-    { name: 'SPORTS BOOK', path: '/cricket-nav' },
-    { name: 'HORSE RACING', path: '/cricket-nav' },
-    { name: 'GREYHOUND RACING', path: '/cricket-nav' },
-    { name: 'BINARY', path: '/cricket-nav' },
-    { name: 'KABADDI', path: '/cricket-nav' },
-    { name: 'POLITICS', path: '/cricket-nav' },
-    { name: 'BASKETBALL', path: '/cricket-nav' },
-    { name: 'BASEBALL', path: '/cricket-nav' },
-    { name: 'TABLE TENNIS', path: '/cricket-nav' },
+    { name: 'CRICKET', path: '/cricket' },
+    { name: 'FOOTBALL', path: '/football' },
+    { name: 'TENNIS', path: '/tennis' },
+    { name: 'CASINO', path: '/cricket' },
+    { name: 'INT CASINO', path: '/cricket' },
+    { name: 'SPORTS BOOK', path: '/cricket' },
+    { name: 'HORSE RACING', path: '/cricket' },
+    { name: 'GREYHOUND RACING', path: '/cricket' },
+    { name: 'BINARY', path: '/cricket' },
+    { name: 'KABADDI', path: '/cricket' },
+    { name: 'POLITICS', path: '/cricket' },
+    { name: 'BASKETBALL', path: '/cricket' },
+    { name: 'BASEBALL', path: '/cricket' },
+    { name: 'TABLE TENNIS', path: '/cricket' },
   ];
 
   const scrollRef = useRef(null);
 
   const handleClick = (item) => {
-    console.log('Clicked Item:', item.name);
-    setSelectedItem(item.name); // Set selected item name
-
-    // Store the selected item in localStorage so it can be accessed from other components
+    setSelectedItem(item.name);
     localStorage.setItem('selectedNavItem', item.name);
-
-    navigate(item.path); // Navigate to path
+    navigate(item.path);
   };
-  // Handle mouse dragging for scrolling
   const handleMouseDown = (e) => {
     const slider = scrollRef.current;
     let startX = e.pageX - slider.offsetLeft;

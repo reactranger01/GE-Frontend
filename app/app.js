@@ -9,6 +9,7 @@ import createReducer from './redux/reducers';
 import rootSaga from './redux/rootSaga';
 import {
   Cricket,
+  CricketMarket,
   Football,
   InplayPage,
   Landing,
@@ -40,6 +41,12 @@ function App() {
             <Route path="/football" element={<Football />} />
             <Route path="/tennis" element={<Tennis />} />
             <Route path="/inplay" element={<InplayPage />} />
+            <Route
+              path="/cricket-market/:eventId"
+              element={<CricketMarket />}
+            />
+            <Route path="/football-market/:eventId" element={<InplayPage />} />
+            <Route path="/tennis-market/:eventId" element={<InplayPage />} />
             <Route path="cricket-nav" element={<NavbarNavigationPage />} />
           </Route>
           <Route path="/*" element={<NotFound />} />

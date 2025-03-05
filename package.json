@@ -25,6 +25,7 @@
     "@mui/material": "^6.4.6",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.13",
     "framer-motion": "^12.4.1",
     "i18next": "^23.1.0",
     "i18next-browser-languagedetector": "^7.0.2",

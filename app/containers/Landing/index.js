@@ -3,13 +3,21 @@ import SecondComponent from '@/components/SecondComponent';
 import TopComponent from '@/components/TopComponent';
 import { reactIcons } from '@/utils/icons';
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 function Landing() {
   const [showSports, setShowSports] = useState(true);
   const toggleSports = () => {
     setShowSports((prev) => !prev);
   };
+  const location = useLocation();
+
+  // Check if the pathname matches any of the patterns
+  const isMarketPage = [
+    '/cricket-market/',
+    '/football-market/',
+    '/tennis-market/',
+  ].some((path) => location.pathname.startsWith(path));
   return (
     <div className="overflow-x-hidden">
       {/* <Navbar /> */}
@@ -42,8 +50,13 @@ function Landing() {
           {showSports && <LeftSidebar />}
         </div>
         <div className="w-[85vw] bg-white h-full p-2">
-          <TopComponent />
-          <SecondComponent />
+          {!isMarketPage && (
+            <>
+              <TopComponent />
+              <SecondComponent />
+            </>
+          )}
+
           <Outlet />
         </div>
       </div>
