@@ -11,12 +11,16 @@ import {
   Cricket,
   CricketMarket,
   Football,
+  FootballMarket,
   InplayPage,
   Landing,
+  LoginPage,
   NotFound,
   Tennis,
+  TennisMarket,
 } from './containers/pageListAsync';
 import NavbarNavigationPage from './containers/Pages/NavbarNavigation';
+import ScrollToTop from './ScrollToTop';
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = createReducer();
@@ -35,7 +39,9 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Landing />}>
             <Route index element={<Cricket />} />
             <Route path="/football" element={<Football />} />
@@ -45,8 +51,11 @@ function App() {
               path="/cricket-market/:eventId"
               element={<CricketMarket />}
             />
-            <Route path="/football-market/:eventId" element={<InplayPage />} />
-            <Route path="/tennis-market/:eventId" element={<InplayPage />} />
+            <Route
+              path="/football-market/:eventId"
+              element={<FootballMarket />}
+            />
+            <Route path="/tennis-market/:eventId" element={<TennisMarket />} />
             <Route path="cricket-nav" element={<NavbarNavigationPage />} />
           </Route>
           <Route path="/*" element={<NotFound />} />

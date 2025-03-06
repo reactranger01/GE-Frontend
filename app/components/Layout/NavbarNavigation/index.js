@@ -4,7 +4,6 @@ import { IoIosArrowDown } from 'react-icons/io';
 const dropdownOptions = ['Competitions', 'Time'];
 
 const NavbarNavigation = () => {
-  console.log('Received selectedItem:', selectedItem);
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {

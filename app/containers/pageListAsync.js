@@ -6,12 +6,25 @@ import loadable from '../utils/loadable';
 export const Landing = loadable(() => import('./Landing'), {
   fallback: <Loading />,
 });
+// LoginPage Page
+export const LoginPage = loadable(() => import('./Pages/LoginPage'), {
+  fallback: <Loading />,
+});
+
 // Home Page
 export const Home = loadable(() => import('./Pages/Home'), {
   fallback: <Loading />,
 });
 // CricketMarket Page
 export const CricketMarket = loadable(() => import('./Pages/CricketMarket'), {
+  fallback: <Loading />,
+});
+// FootballMarket Page
+export const FootballMarket = loadable(() => import('./Pages/FootballMarket'), {
+  fallback: <Loading />,
+});
+// TennisMarket Page
+export const TennisMarket = loadable(() => import('./Pages/TennisMarket'), {
   fallback: <Loading />,
 });
 // InplayPage Page

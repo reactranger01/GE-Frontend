@@ -3,9 +3,7 @@ import { MdSportsCricket } from 'react-icons/md';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BettingOdds = ({ minValue, maxValue, matchData }) => {
-  console.log(matchData, 'data');
-
+const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-10 gap-0.5">
@@ -39,16 +37,36 @@ const BettingOdds = ({ minValue, maxValue, matchData }) => {
               </span>
             </div>
             {/* 1 backPrice3 */}
-            <div className="bg-[#73bcf0ff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.backPrice3,
+                  'BACK',
+                );
+              }}
+              className="bg-[#73bcf0ff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice3 || team?.BackPrice3 || '-'}
               </div>
               <div className="text-center text-sm text-[#000000]">
                 {team?.backsize3 || team?.backSize3 || team?.BackSize3 || 0}
               </div>
-            </div>
+            </button>
             {/* 2 backPrice2 */}
-            <div className="bg-[#73bcf0ff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.backPrice2,
+                  'BACK',
+                );
+              }}
+              className="bg-[#73bcf0ff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice2 || team?.BackPrice2 || '-'}
               </div>
@@ -56,9 +74,19 @@ const BettingOdds = ({ minValue, maxValue, matchData }) => {
               <div className="text-center text-sm text-[#000000]">
                 {team?.backsize2 || team?.backSize2 || team?.BackSize2 || 0}
               </div>
-            </div>
+            </button>
             {/* 3 backPrice1 */}
-            <div className="bg-[#73bcf0ff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.backPrice1,
+                  'BACK',
+                );
+              }}
+              className="bg-[#73bcf0ff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice1 || team?.BackPrice1 || '-'}
               </div>
@@ -66,28 +94,58 @@ const BettingOdds = ({ minValue, maxValue, matchData }) => {
               <div className="text-center text-sm text-[#000000]">
                 {team?.backsize1 || team?.backSize1 || team?.BackSize1 || 0}
               </div>
-            </div>
+            </button>
 
             {/* 1 layPrice1 */}
-            <div className="bg-[#faaabbff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.layPrice1,
+                  'LAY',
+                );
+              }}
+              className="bg-[#faaabbff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice1 || team?.LayPrice1 || '-'}
               </div>
               <div className="text-center text-sm text-[#000000]">
                 {team?.laysize1 || team?.laySize1 || team?.LaySize1 || 0}
               </div>
-            </div>
+            </button>
             {/* 2 layPrice2 */}
-            <div className="bg-[#faaabbff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.layPrice2,
+                  'LAY',
+                );
+              }}
+              className="bg-[#faaabbff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice2 || team?.LayPrice2 || '-'}
               </div>
               <div className="text-center text-sm text-[#000000]">
                 {team?.laysize2 || team?.laySize2 || team?.LaySize2 || 0}
               </div>
-            </div>
+            </button>
             {/* 3 layPrice3 */}
-            <div className="bg-[#faaabbff] p-2 pt-0">
+            <button
+              onClick={async () => {
+                await addToBetPlace(
+                  team?.selectionId,
+                  team?.runnerName,
+                  team?.layPrice3,
+                  'LAY',
+                );
+              }}
+              className="bg-[#faaabbff] p-2 pt-0"
+            >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice3 || team?.LayPrice3 || '-'}
               </div>
@@ -95,7 +153,7 @@ const BettingOdds = ({ minValue, maxValue, matchData }) => {
               <div className="text-center text-sm text-[#000000]">
                 {team?.laysize3 || team?.laySize3 || team?.LaySize3 || 0}
               </div>
-            </div>
+            </button>
           </React.Fragment>
         ))}
       </div>

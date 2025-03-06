@@ -5,28 +5,13 @@ import Premium from '@/components/Cricket/Premium';
 import TopComponent from '@/components/Cricket/TopComponent';
 import Sessions from '@/components/Cricket/Sessions';
 import RightTopComponent from '@/components/Cricket/RightTopComponent';
-import {
-  BetSlip,
-  BookmakersCricket,
-  MatchOddsCricket,
-  SessionsCricket,
-} from '@/components';
-import useCricketInner from '@/hooks/useCricketInner';
+import { BetSlip, MatchOddsFootball } from '@/components';
 import dayjs from 'dayjs';
+import useFootballInner from '@/hooks/useFootballInner';
 
-const CricketMarket = () => {
-  const {
-    // isLogin,
-    oddsData,
-    matchData,
-    particularMatchData,
-    sessionBooksetClcuData,
-    sessionData,
-    placedBetWinLossBookmakerData,
-    bookmakerData,
-    bookmakerTransformData,
-    placedBetWinLossDatas,
-  } = useCricketInner();
+const FootballMarket = () => {
+  const { matchData, fixtureEventName, placedBetWinLossDatas, allMarketData } =
+    useFootballInner();
 
   const gamePredication = { odd: 'Who will Win the Match?' };
 
@@ -134,54 +119,43 @@ const CricketMarket = () => {
     },
   ];
 
-  const dateTime = dayjs(oddsData?.matchDateTime).format(
+  const dateTime = dayjs(allMarketData?.[0]?.matchDateTime).format(
     'MMMM DD YYYY - hh:mm:a',
   );
+
   return (
     <div className="flex w-full">
       <div className="w-[70%] pt-2 ml-1">
         <div className="space-y-4">
-          <TopComponent game={oddsData?.name} dateTime={dateTime} />
+          <TopComponent game={allMarketData?.[0]?.name} dateTime={dateTime} />
 
           <div className="space-y-2">
             <MatchOdd game="Match Odds" cashout="CashOut" />
 
-            <MatchOddsCricket
-              heading="MATCH ODDS"
-              data={oddsData}
-              competition_name={matchData?.competition_name}
-              placedBetWinLossDatas={placedBetWinLossDatas}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <MatchOdd game="Bookmakers" cashout="CashOut" />
-            {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
-            <BookmakersCricket
-              heading="BOOKMAKERS"
-              data={{
-                ...bookmakerTransformData,
-                market_id: oddsData?.market_id,
-                noData: bookmakerData ? false : true,
-              }}
-              competition_name={matchData?.competition_name}
-              placedBetWinLossBookmakerData={placedBetWinLossBookmakerData}
-              oddsData={oddsData}
-              matchName={matchData?.name}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <MatchOdd game="Sessions" cashout="CashOut" />
-            {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
-            <SessionsCricket
-              sessionBooksetClcuData={sessionBooksetClcuData}
-              data={sessionData}
-              matchName={matchData?.name}
-              particularMatchData={particularMatchData}
-              competition_name={matchData?.competition_name}
-              oddsData={oddsData}
-            />
+            {allMarketData?.map((market, index) =>
+              market?.market_name == 'Match Odds' ? (
+                <MatchOddsFootball
+                  key={index}
+                  heading="Match Odds"
+                  data={market}
+                  fixtureEventName={fixtureEventName}
+                  placedBetWinLossDatas={placedBetWinLossDatas}
+                  competition_name={matchData?.competition_name}
+                  allMarketData={allMarketData}
+                />
+              ) : (
+                <MatchOddsFootball
+                  key={index}
+                  heading={market?.market_name?.toUpperCase()}
+                  data={market}
+                  fixtureEventName={fixtureEventName}
+                  type="under15"
+                  placedBetWinLossDatas={placedBetWinLossDatas}
+                  competition_name={matchData?.competition_name}
+                  allMarketData={allMarketData}
+                />
+              ),
+            )}
           </div>
 
           <div className="space-y-2">
@@ -241,4 +215,4 @@ const CricketMarket = () => {
   );
 };
 
-export default CricketMarket;
+export default FootballMarket;

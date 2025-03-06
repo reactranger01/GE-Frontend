@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'; // Don't forget to import PropTypes
 // import { FaTv } from 'react-icons/fa';
 // import { FaGamepad } from 'react-icons/fa';
-
+// eslint-disable-next-line
 const FeatureIcons = ({ data }) => {
-  console.log(data);
   return (
     <div className="flex gap-2 items-center">
       {/* {features.includes('live') && ( */}

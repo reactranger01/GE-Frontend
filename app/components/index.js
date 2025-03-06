@@ -32,3 +32,18 @@ export const SessionsCricket = loadable(
     fallback: <Loading />,
   },
 );
+export const MatchOddsFootball = loadable(
+  () => import('./Football/InnerMarketFootball/MatchOddsFootball'),
+  {
+    fallback: <Loading />,
+  },
+);
+export const MatchOddsTennis = loadable(
+  () => import('./Tennis/InnerMarketTennis/MatchOddsTennis'),
+  {
+    fallback: <Loading />,
+  },
+);
+export const BetSlip = loadable(() => import('./BetSlip'), {
+  fallback: <Loading />,
+});

@@ -3,7 +3,6 @@ import BettingOdds from '../../BettingOdds';
 import PropTypes from 'prop-types';
 
 const BookmakersCricket = ({ data }) => {
-  console.log(data, 'data');
   return (
     <div>
       <BettingOdds

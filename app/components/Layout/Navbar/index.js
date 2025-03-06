@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'HOME', path: '/' },
-    { name: 'CRICKET', path: '/cricket' },
+    { name: 'CRICKET', path: '/' },
     { name: 'FOOTBALL', path: '/football' },
     { name: 'TENNIS', path: '/tennis' },
     { name: 'CASINO', path: '/cricket' },
