@@ -144,8 +144,6 @@ const CricketMarket = () => {
           <TopComponent game={oddsData?.name} dateTime={dateTime} />
 
           <div className="space-y-2">
-            <MatchOdd game="Match Odds" cashout="CashOut" />
-
             <MatchOddsCricket
               heading="MATCH ODDS"
               data={oddsData}
@@ -158,15 +156,14 @@ const CricketMarket = () => {
             <MatchOdd game="Bookmakers" cashout="CashOut" />
             {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
             <BookmakersCricket
-              heading="BOOKMAKERS"
               data={{
                 ...bookmakerTransformData,
                 market_id: oddsData?.market_id,
                 noData: bookmakerData ? false : true,
               }}
+              matchDetails={oddsData}
               competition_name={matchData?.competition_name}
               placedBetWinLossBookmakerData={placedBetWinLossBookmakerData}
-              oddsData={oddsData}
               matchName={matchData?.name}
             />
           </div>
@@ -180,7 +177,7 @@ const CricketMarket = () => {
               matchName={matchData?.name}
               particularMatchData={particularMatchData}
               competition_name={matchData?.competition_name}
-              oddsData={oddsData}
+              matchDetails={oddsData}
             />
           </div>
 

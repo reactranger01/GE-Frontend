@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { getAuthData, removeAuthCookie } from './apiHandlers';
 import Cookies from 'js-cookie';
 

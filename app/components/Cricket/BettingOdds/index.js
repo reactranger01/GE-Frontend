@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
+  console.log(matchData, 'matchData');
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-10 gap-0.5">
@@ -40,9 +41,9 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.backPrice3,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+                  team?.backPrice3 || team?.BackPrice3,
                   'BACK',
                 );
               }}
@@ -59,9 +60,9 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.backPrice2,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+                  team?.backPrice2 || team?.BackPrice2,
                   'BACK',
                 );
               }}
@@ -79,9 +80,10 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.backPrice1,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+
+                  team?.backPrice1 || team?.BackPrice1,
                   'BACK',
                 );
               }}
@@ -100,9 +102,10 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.layPrice1,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+
+                  team?.layPrice1 || team?.LayPrice1,
                   'LAY',
                 );
               }}
@@ -119,9 +122,10 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.layPrice2,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+
+                  team?.layPrice2 || team?.LayPrice2,
                   'LAY',
                 );
               }}
@@ -138,9 +142,10 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
             <button
               onClick={async () => {
                 await addToBetPlace(
-                  team?.selectionId,
-                  team?.runnerName,
-                  team?.layPrice3,
+                  team?.selectionId || team?.SelectionId,
+                  team?.runnerName || team?.RunnerName,
+
+                  team?.layPrice3 || team?.LayPrice3,
                   'LAY',
                 );
               }}

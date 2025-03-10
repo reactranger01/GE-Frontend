@@ -14,8 +14,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { betValidationSchema } from '@/utils/validation';
 import { isYupError, parseYupError } from '@/utils/Yup';
 import { calcCurrentBetStats } from '@/utils/helper';
-import { toast } from 'react-toastify';
-import InputField from '../FormElements/InputField';
+import toast from 'react-hot-toast';
 // ORIGINAL BETSLIP
 const BetSlip = () => {
   const [betData, setBetData] = useState({});
@@ -28,6 +27,7 @@ const BetSlip = () => {
   const [formError, setFormError] = useState({
     stake: '',
   });
+  console.log(bets, 'bets');
   useEffect(() => {
     setBetData(bets?.[0]);
     setEnent_ID(bets?.[0]?.eventId);

@@ -117,8 +117,16 @@ import { PiSquaresFour } from 'react-icons/pi';
 import { IoFootball, IoReceiptOutline } from 'react-icons/io5';
 import { SlPlane } from 'react-icons/sl';
 import { VscTriangleDown } from 'react-icons/vsc';
+import { FaHandPointDown } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
+import { FaKey } from 'react-icons/fa';
+import { FaSignInAlt } from 'react-icons/fa';
 
 export const reactIcons = {
+  faUser: <FaUserAlt />,
+  faSignin: <FaSignInAlt />,
+  faKey: <FaKey />,
+  pointDown: <FaHandPointDown />,
   arrowleft1: <FaArrowLeft />,
   bot: <BsRobot />,
   share: <BsShareFill />,

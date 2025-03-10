@@ -5,7 +5,7 @@ import Premium from '@/components/Cricket/Premium';
 import TopComponent from '@/components/Cricket/TopComponent';
 import Sessions from '@/components/Cricket/Sessions';
 import RightTopComponent from '@/components/Cricket/RightTopComponent';
-import { MatchOddsTennis } from '@/components';
+import { BetSlip, MatchOddsTennis } from '@/components';
 import dayjs from 'dayjs';
 import useTennisInner from '@/hooks/useTennisInner';
 
@@ -202,6 +202,7 @@ const TennisMarket = () => {
         </div>
         <div className=" w-full mt-2">
           <RightTopComponent stream="Place Bet" />
+          <BetSlip />
         </div>
         <div className=" w-full mt-2">
           <RightTopComponent stream="My Bet" />

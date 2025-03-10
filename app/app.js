@@ -2,8 +2,9 @@ import './i18n';
 import React from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import { configureStore } from '@reduxjs/toolkit';
+import { Toaster } from 'react-hot-toast';
+
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './redux/reducers';
 import rootSaga from './redux/rootSaga';
@@ -61,18 +62,7 @@ function App() {
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="colored"
-      />
+      <Toaster position="top-center" reverseOrder={false} />
     </Provider>
   );
 }

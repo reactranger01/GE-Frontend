@@ -171,3 +171,16 @@ body {
   color: white;
   font-weight: bold;
 }
+
+.slide-right-hand {
+  animation: slide-right 2s infinite alternate both;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}

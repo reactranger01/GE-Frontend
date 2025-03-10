@@ -1,15 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaSearchPlus } from 'react-icons/fa';
 import { X, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { isLoggedIn, removeAuthCookie } from '@/utils/apiHandlers';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { init } from '@/redux/actions';
+import { numberWithCommas } from '@/utils/numberWithCommas';
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBalancePopupOpen, setIsBalancePopupOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const isLogin = isLoggedIn();
+  const userInfo = useSelector((state) => state.user);
+  console.log(userInfo, 'dsjfffff');
   const profileOptions = [
     'Profile Settings',
     'Account History',
@@ -61,7 +70,23 @@ const Navbar = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
   };
-
+  const handleLogout = async () => {
+    navigate('/');
+    Cookies.remove('__user__isLoggedIn');
+    Cookies.remove('test__user__isLoggedIn');
+    Cookies.remove('development__user__isLoggedIn');
+    localStorage.removeItem('yolo_userID');
+    localStorage.removeItem('yolo_userName');
+    removeAuthCookie();
+    toast.success('Logged Out Successfully...');
+  };
+  useEffect(() => {
+    dispatch(init());
+    const intervalId = setInterval(() => {
+      dispatch(init());
+    }, 5000);
+    return () => clearInterval(intervalId);
+  }, [dispatch, isLogin]);
   return (
     <div className="w-full relative">
       {/* Top Bar */}
@@ -140,33 +165,50 @@ const Navbar = () => {
             </a>
 
             {/* Balance Button */}
-            <button
-              onClick={() => setIsBalancePopupOpen(true)}
-              className="text-white text-0.8vw hover:text-gray-300 whitespace-nowrap leading-none"
-            >
-              Balance: 0.00
-              <br />
-              <span className="underline">Exposure: 0</span>
-            </button>
-
-            {/* Profile Dropdown */}
-            <div className="relative group">
-              <button className="text-white text-0.8vw flex items-center gap-1 whitespace-nowrap">
-                demo123 <ChevronDown size={16} />
-              </button>
-
-              {/* Dropdown on Hover */}
-              <div className="absolute top-full right-0 mt-2 bg-white text-black py-2 rounded shadow-lg z-50 hidden group-hover:block">
-                {profileOptions.map((option, index) => (
-                  <button
-                    key={index}
-                    className="w-full text-left px-4 py-2 hover:bg-gray-800 text-0.8vw"
-                  >
-                    {option}
+            {isLogin ? (
+              <>
+                {' '}
+                <button
+                  onClick={() => setIsBalancePopupOpen(true)}
+                  className="text-white text-0.8vw hover:text-gray-300 whitespace-nowrap leading-none"
+                >
+                  Balance:{' '}
+                  {numberWithCommas(
+                    userInfo?.balance - Math.abs(userInfo?.exposureAmount) || 0,
+                  )}
+                  <br />
+                  <span className="underline">
+                    Exposure: {numberWithCommas(userInfo?.exposureAmount || 0)}
+                  </span>
+                </button>
+                {/* Profile Dropdown */}
+                <div className="relative group">
+                  <button className="text-white text-0.8vw flex items-center gap-1 whitespace-nowrap">
+                    {userInfo?.username || 'User'} <ChevronDown size={16} />
                   </button>
-                ))}
-              </div>
-            </div>
+
+                  {/* Dropdown on Hover */}
+                  <div className="absolute top-2 right-0 mt-2 bg-white text-black py-2 rounded shadow-lg z-50 hidden group-hover:block">
+                    {profileOptions.map((option, index) => (
+                      <button
+                        onClick={() => option == 'Logout' && handleLogout()}
+                        key={index}
+                        className="w-full text-left px-4 py-2 hover:bg-gray-200 text-0.8vw"
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <button
+                onClick={() => navigate('/login')}
+                className="text-white text-0.8vw flex items-center gap-1 whitespace-nowrap"
+              >
+                Login
+              </button>
+            )}
           </div>
 
           {/* Bottom Row with Marquee */}
