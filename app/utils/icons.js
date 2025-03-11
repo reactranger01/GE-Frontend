@@ -121,9 +121,13 @@ import { FaHandPointDown } from 'react-icons/fa';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaKey } from 'react-icons/fa';
 import { FaSignInAlt } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 export const reactIcons = {
   faUser: <FaUserAlt />,
+  faSearch: <FaSearch />,
+  faHome: <FaHome />,
   faSignin: <FaSignInAlt />,
   faKey: <FaKey />,
   pointDown: <FaHandPointDown />,

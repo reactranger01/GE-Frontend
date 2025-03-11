@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@mui/material';
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -24,7 +25,72 @@ const items = [
   { id: 19, name: 'Darts', path: '/#' },
   { id: 20, name: 'Futsal', path: '/#' },
 ];
+const mobItems = [
+  {
+    id: 1,
+    name: 'CRICKET',
+    path: '/',
+    image: '/images/Slider/cricketIcon.png',
+  },
+  {
+    id: 2,
+    name: 'FOOTBALL',
+    path: '/football',
+    image: '/images/Slider/footballIcon.png',
+  },
+  {
+    id: 3,
+    name: 'TENNIS',
+    path: '/tennis',
+    image: '/images/Slider/tennisIcon.png',
+  },
+  {
+    id: 4,
+    name: 'HORSE RACING',
+    path: '/#',
+    image: '/images/Slider/horseIcon.png',
+  },
+  {
+    id: 5,
+    name: 'GREYHOUND RACING',
+    path: '/#',
+    image: '/images/Slider/dogIcon.png',
+  },
+  {
+    id: 7,
+    name: 'BINARY',
+    path: '/#',
+    image: '/images/Slider/binaryIcon.png',
+  },
+  {
+    id: 8,
+    name: 'KABADDI',
+    path: '/#',
+    image: '/images/Slider/kabaddiIcon.png',
+  },
+  {
+    id: 9,
+    name: 'Binary',
+    path: '/#',
+    image: '/images/Slider/Icon.png',
+  },
+  {
+    id: 10,
+    name: 'POLITICS',
+    path: '/#',
+    image: '/images/Slider/politicsIcon.png',
+  },
 
+  // { id: 12, name: 'Basketball', path: '/#' },
+  // { id: 13, name: 'Baseball', path: '/#' },
+  // { id: 14, name: 'Table Tennis', path: '/#' },
+  // { id: 15, name: 'Volleyball', path: '/#' },
+  // { id: 16, name: 'Ice Hockey', path: '/#' },
+  // { id: 17, name: 'Rugby', path: '/#' },
+  // { id: 18, name: 'Mixed Martial Arts', path: '/#' },
+  // { id: 19, name: 'Darts', path: '/#' },
+  // { id: 20, name: 'Futsal', path: '/#' },
+];
 const dropdownOptions = ['Competitions', 'Time'];
 
 const SecondComponent = () => {
@@ -34,60 +100,85 @@ const SecondComponent = () => {
   const [virtualActive, setVirtualActive] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState('Time');
+  const isMobile = useMediaQuery('(max-width:767px)');
 
   return (
     <div className="w-full bg-white space-y-1">
       {/* Top Navigation Bar */}
-      <div className="bg-purple-600 h-14 px-3 pl-0">
-        <div className="flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400">
-          {items.map((item) => (
+      {isMobile ? (
+        <div className="flex bg-purple-600 gap-2 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400">
+          {mobItems.map((item) => (
             <button
               key={item.id}
               onClick={() => navigate(item.path)}
-              className={`px-4 py-2 font-bold text-xl flex items-center h-full transition-colors ${
+              className={`p-1 font-bold text-12 flex flex-col justify-center items-center h-full transition-colors ${
                 location.pathname === item.path
                   ? 'bg-black text-white'
                   : 'text-white hover:bg-purple-700'
               }`}
             >
+              <img src={item.image} className="h-5" alt="" />
               {item.name}
             </button>
           ))}
         </div>
-      </div>
+      ) : (
+        <div className="bg-purple-600 h-14 px-3 pl-0">
+          <div className="flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400">
+            {items.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => navigate(item.path)}
+                className={`px-4 py-2 font-bold text-xl flex items-center h-full transition-colors ${
+                  location.pathname === item.path
+                    ? 'bg-black text-white'
+                    : 'text-white hover:bg-purple-700'
+                }`}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Controls Section */}
-      <div className="flex justify-end items-center border-b-2 border-gray-200 pb-2 px-4">
-        <div className="flex items-center gap-4">
+      <div className="flex md:justify-end justify-between w-full items-center border-b-2 border-gray-200 pb-2 md:px-4 px-2">
+        <div className="flex items-center md:gap-4 gap-1 w-full justify-between md:justify-end">
           {/* Live Button */}
-          <button
-            onClick={() => setLiveActive(!liveActive)}
-            className={`px-6 py-2 border border-black font-bold rounded-full flex items-center gap-2 transition-colors ${
-              liveActive ? 'bg-green-500 text-white' : 'bg-white text-black'
-            }`}
-          >
-            <span>{liveActive ? '+' : '-'}</span>
-            <span>Live</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setLiveActive(!liveActive)}
+              className={`md:px-6 text-12 md:text-16 px-2 md:py-2 border border-black font-bold rounded-full flex items-center gap-2 transition-colors ${
+                liveActive ? 'bg-green-500 text-white' : 'bg-white text-black'
+              }`}
+            >
+              <span>{liveActive ? '+' : '-'}</span>
+              <span>Live</span>
+            </button>
 
-          {/* Virtual Button */}
-          <button
-            onClick={() => setVirtualActive(!virtualActive)}
-            className={`px-6 py-2 border border-black rounded-full font-bold flex items-center gap-2 transition-colors ${
-              virtualActive ? 'bg-green-500 text-white' : 'bg-white text-black'
-            }`}
-          >
-            <span>{virtualActive ? '+' : '-'}</span>
-            <span>Virtual</span>
-          </button>
-
+            {/* Virtual Button */}
+            <button
+              onClick={() => setVirtualActive(!virtualActive)}
+              className={`md:px-6 text-12 md:text-16 px-2 md:py-2 border border-black rounded-full font-bold flex items-center gap-2 transition-colors ${
+                virtualActive
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white text-black'
+              }`}
+            >
+              <span>{virtualActive ? '+' : '-'}</span>
+              <span>Virtual</span>
+            </button>
+          </div>
           {/* View By Dropdown */}
           <div className="relative flex items-center gap-2">
-            <span className="text-black font-bold">View By:</span>
+            <span className="text-black font-bold text-12 md:text-16">
+              View By:
+            </span>
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="w-48 h-10 bg-black text-white rounded-md px-4 flex items-center justify-between"
+                className="md:w-48 md:h-10 text-12 md:text-16  bg-black text-white rounded-md px-4 flex items-center justify-between"
               >
                 <span className="uppercase">{selectedDropdown}</span>
                 <IoIosArrowDown

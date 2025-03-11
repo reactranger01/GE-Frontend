@@ -227,7 +227,7 @@ const LoginPage = () => {
         <img
           src="/images/logo.png"
           alt="Gold365"
-          className="h-[5vw] w-[22vw] object-contain cursor-pointer"
+          className=" w-[22vw] object-contain cursor-pointer"
           onClick={() => navigate('/')}
         />
       </div>

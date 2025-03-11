@@ -8,7 +8,8 @@ import {
   fetchUserEventBetsAction,
 } from '../redux/actions';
 // import { getUser } from './modules/user';
-import { getAuthData, isLoggedIn } from '@/utils/apiHandlers';
+import { getAuthData, isLoggedIn, removeAuthCookie } from '@/utils/apiHandlers';
+import Cookies from 'js-cookie';
 // import { getUser } from './modules/user';
 
 function* fetchBet(action) {
@@ -61,6 +62,13 @@ function* init() {
         const response = await getAuthData('/user/get-user-details');
         if (response?.status === 200) {
           return response.data;
+        } else if (response?.status === 403) {
+          Cookies.remove('__user__isLoggedIn');
+          Cookies.remove('test__user__isLoggedIn');
+          Cookies.remove('development__user__isLoggedIn');
+          localStorage.removeItem('yolo_userID');
+          localStorage.removeItem('yolo_userName');
+          removeAuthCookie();
         }
 
         return null;
@@ -88,6 +96,13 @@ function* refreshUserDetails() {
 
       if (response?.status === 200) {
         return response.data;
+      } else if (response?.status === 403) {
+        Cookies.remove('__user__isLoggedIn');
+        Cookies.remove('test__user__isLoggedIn');
+        Cookies.remove('development__user__isLoggedIn');
+        localStorage.removeItem('yolo_userID');
+        localStorage.removeItem('yolo_userName');
+        removeAuthCookie();
       }
 
       return null;

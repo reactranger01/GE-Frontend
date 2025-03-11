@@ -25,7 +25,7 @@ function Landing() {
         <Navbar />
       </div>
       <div className="flex gap-1 ">
-        <div className="w-[15vw] flex-shrink-0 bg-[#CCCCCC]">
+        <div className="w-[15vw] lg:block flex-shrink-0 bg-[#CCCCCC] hidden">
           <div className="bg-[#008000] flex items-center gap-2 py-2 px-2 mb-[1px]">
             <img src="/images/depositImg.webp" className="w-6" alt="" />
             <p className="text-14">Deposit</p>
@@ -49,7 +49,7 @@ function Landing() {
           </div>
           {showSports && <LeftSidebar />}
         </div>
-        <div className="w-[85vw] bg-white h-full p-2">
+        <div className="w-full lg:w-[85vw] bg-white h-full md:p-2 ">
           {!isMarketPage && (
             <>
               <TopComponent />

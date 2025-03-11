@@ -9,9 +9,9 @@ const DisableButton = ({ btncolor }) => {
           : btncolor === 'blue'
           ? 'bg-[#73bcf0] border-[#73bcf0]'
           : 'bg-neutral-400 '
-      } px-4 py-2 text-center text-black cursor-not-allowed pointer-events-none opacity-50  `}
+      } px-4 md:py-2 text-center text-black cursor-not-allowed pointer-events-none opacity-50 h-fit md:h-auto `}
     >
-      <span className="text-neutral-950 text-xl font-bold">-</span>
+      <span className="text-neutral-950 md:text-xl font-bold">-</span>
     </div>
   );
 };
