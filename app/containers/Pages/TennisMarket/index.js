@@ -124,7 +124,7 @@ const TennisMarket = () => {
   );
   return (
     <div className="flex w-full">
-      <div className="w-[70%] pt-2 ml-1">
+      <div className="md:w-[70%] w-full pt-2 ml-1">
         <div className="space-y-4">
           <TopComponent game={allMarketData?.[0]?.name} dateTime={dateTime} />
 
@@ -196,7 +196,7 @@ const TennisMarket = () => {
       </div>
 
       {/* Side Panel - 40% width */}
-      <div className="w-[30%] p-2">
+      <div className="w-[30%] p-2 hidden md:block">
         <div className=" w-full">
           <RightTopComponent stream="Live Match" live="live stream started" />
         </div>

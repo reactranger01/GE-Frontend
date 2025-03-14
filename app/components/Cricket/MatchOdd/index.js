@@ -21,9 +21,11 @@ const MatchOdd = ({ game, cashout }) => {
     <div className="flex justify-between items-center w-full h-auto bg-[#8000ffff] text-white p-1">
       {/* Left Side: Game Name + Conditional CashOut */}
       <div className="flex items-center gap-4">
-        <h2 className="text-xl font-bold">{game}</h2>
+        <h2 className="text-[13px] font-normal md:text-xl md:font-bold">
+          {game}
+        </h2>
         {cashout && (
-          <div className="bg-[#ffc21cff] text-[#000000ff] px-3 py-1 rounded-md uppercase text-sm font-semibold">
+          <div className="hidden md:block bg-[#ffc21cff] text-[#000000ff] px-3 py-1 rounded-md uppercase text-sm font-semibold">
             {cashout}
           </div>
         )}

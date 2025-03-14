@@ -139,11 +139,11 @@ const CricketMarket = () => {
   );
   return (
     <div className="flex w-full">
-      <div className="w-[70%] pt-2 ml-1">
-        <div className="space-y-4">
+      <div className="md:w-[70%] w-full  md:pt-2 md:ml-1">
+        <div className="md:space-y-4 space-y-1">
           <TopComponent game={oddsData?.name} dateTime={dateTime} />
 
-          <div className="space-y-2">
+          <div className="md:space-y-2">
             <MatchOddsCricket
               heading="MATCH ODDS"
               data={oddsData}
@@ -152,7 +152,7 @@ const CricketMarket = () => {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="md:space-y-2">
             <MatchOdd game="Bookmakers" cashout="CashOut" />
             {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
             <BookmakersCricket
@@ -222,7 +222,7 @@ const CricketMarket = () => {
       </div>
 
       {/* Side Panel - 40% width */}
-      <div className="w-[30%] p-2">
+      <div className="w-[30%] p-2 hidden md:block">
         <div className=" w-full">
           <RightTopComponent stream="Live Match" live="live stream started" />
         </div>

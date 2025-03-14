@@ -4,24 +4,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
-  console.log(matchData, 'matchData');
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <div className="grid grid-cols-10 gap-0.5">
-        <div className="text-cyan-500 font-semibold text-center text-sm mt-1">
+      <div className="grid md:grid-cols-10 grid-cols-9 md:gap-0.5">
+        <div className="col-span-2 md:col-span-1 text-[#000000ff] font-bold text-12  md:text-cyan-500 md:font-semibold md:text-center md:text-sm md:mt-1">
           Min: {minValue}
         </div>
-        <div className="text-cyan-500 font-semibold text-center text-sm mt-1">
+        <div className="col-span-2 md:col-span-1 text-[#000000ff] font-bold text-12  md:text-cyan-500 md:font-semibold md:text-center md:text-sm md:mt-1">
           Max: {maxValue}
         </div>
-        <div className="col-span-4 "></div>
+        <div className=" md:col-span-4 col-span-1"></div>
         <div className="col-span-1">
-          <div className="bg-[#73bcf0ff] text-center py-1 font-bold text-[#000000ff]">
+          <div className="bg-[#73bcf0ff] text-12 md:text-14 text-center md:py-1 font-bold text-[#000000ff]">
             BACK
           </div>
         </div>
         <div className="col-span-1">
-          <div className="bg-[#faaabbff] text-center py-1 font-bold text-[#000000ff]">
+          <div className="bg-[#faaabbff] text-12 md:text-14 text-center md:py-1 font-bold text-[#000000ff]">
             LAY
           </div>
         </div>
@@ -29,11 +28,11 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
         {matchData?.map((team, index) => (
           <React.Fragment key={index}>
             <div
-              className={`col-span-4 py-1 px-2 ${
+              className={`md:col-span-4 col-span-3 md:max-w-none py-1 px-2 border-y border-[#aaa] md:border-none ${
                 index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-50'
               }`}
             >
-              <span className="text-[#000000ff] font-bold capitalize">
+              <span className="text-[#000000ff] font-bold text-12 md:text-14 capitalize">
                 {team?.runnerName || team?.RunnerName}
               </span>
             </div>
@@ -47,12 +46,12 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'BACK',
                 );
               }}
-              className="bg-[#73bcf0ff] p-2 pt-0"
+              className="bg-[#73bcf0ff]  flex-center flex-col border border-[#aaa] md:border-none "
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice3 || team?.BackPrice3 || '-'}
               </div>
-              <div className="text-center text-sm text-[#000000]">
+              <div className="text-center md:text-sm text-12 text-[#000000]">
                 {team?.backsize3 || team?.backSize3 || team?.BackSize3 || 0}
               </div>
             </button>
@@ -66,7 +65,7 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'BACK',
                 );
               }}
-              className="bg-[#73bcf0ff] p-2 pt-0"
+              className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice2 || team?.BackPrice2 || '-'}
@@ -87,13 +86,13 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'BACK',
                 );
               }}
-              className="bg-[#73bcf0ff] p-2 pt-0"
+              className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.backPrice1 || team?.BackPrice1 || '-'}
               </div>
 
-              <div className="text-center text-sm text-[#000000]">
+              <div className="text-center md:text-sm text-12 text-[#000000]">
                 {team?.backsize1 || team?.backSize1 || team?.BackSize1 || 0}
               </div>
             </button>
@@ -109,12 +108,12 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'LAY',
                 );
               }}
-              className="bg-[#faaabbff] p-2 pt-0"
+              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice1 || team?.LayPrice1 || '-'}
               </div>
-              <div className="text-center text-sm text-[#000000]">
+              <div className="text-center md:text-sm text-12 text-[#000000]">
                 {team?.laysize1 || team?.laySize1 || team?.LaySize1 || 0}
               </div>
             </button>
@@ -129,12 +128,12 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'LAY',
                 );
               }}
-              className="bg-[#faaabbff] p-2 pt-0"
+              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice2 || team?.LayPrice2 || '-'}
               </div>
-              <div className="text-center text-sm text-[#000000]">
+              <div className="text-center md:text-sm text-12 text-[#000000]">
                 {team?.laysize2 || team?.laySize2 || team?.LaySize2 || 0}
               </div>
             </button>
@@ -149,13 +148,13 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
                   'LAY',
                 );
               }}
-              className="bg-[#faaabbff] p-2 pt-0"
+              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
             >
               <div className="text-center font-bold text-[#000000ff]">
                 {team?.layPrice3 || team?.LayPrice3 || '-'}
               </div>
 
-              <div className="text-center text-sm text-[#000000]">
+              <div className="text-center md:text-sm text-12 text-[#000000]">
                 {team?.laysize3 || team?.laySize3 || team?.LaySize3 || 0}
               </div>
             </button>
