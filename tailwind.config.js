@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         josefin: ['Josefin', 'sans-serif'],
+        roboto: ['Roboto Condensed', 'sans-serif'],
       },
       gridTemplateColumns: {
         15: 'repeat(15, minmax(0, 1fr))',

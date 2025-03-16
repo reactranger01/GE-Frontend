@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
@@ -182,5 +182,22 @@ body {
   }
   100% {
     transform: translateX(20px);
+  }
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #474bff 94%, #0000) top/9px 9px
+      no-repeat,
+    conic-gradient(#0000 30%, #474bff);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
+  animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
   }
 }

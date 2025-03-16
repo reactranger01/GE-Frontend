@@ -5,13 +5,18 @@ import Premium from '@/components/Cricket/Premium';
 import TopComponent from '@/components/Cricket/TopComponent';
 import Sessions from '@/components/Cricket/Sessions';
 import RightTopComponent from '@/components/Cricket/RightTopComponent';
-import { BetSlip, MatchOddsFootball } from '@/components';
+import { BetSlip, Loading, MatchOddsFootball } from '@/components';
 import dayjs from 'dayjs';
 import useFootballInner from '@/hooks/useFootballInner';
 
 const FootballMarket = () => {
-  const { matchData, fixtureEventName, placedBetWinLossDatas, allMarketData } =
-    useFootballInner();
+  const {
+    matchData,
+    fixtureEventName,
+    placedBetWinLossDatas,
+    allMarketData,
+    loaderOneTime,
+  } = useFootballInner();
 
   const gamePredication = { odd: 'Who will Win the Match?' };
 
@@ -124,94 +129,98 @@ const FootballMarket = () => {
   );
 
   return (
-    <div className="flex w-full">
-      <div className="md:w-[70%] w-full pt-2 ml-1">
-        <div className="space-y-4">
-          <TopComponent game={allMarketData?.[0]?.name} dateTime={dateTime} />
+    <>
+      {!loaderOneTime && <Loading />}
 
-          <div className="space-y-2">
-            <MatchOdd game="Match Odds" cashout="CashOut" />
+      <div className="flex w-full">
+        <div className="md:w-[70%] w-full pt-2 ml-1">
+          <div className="space-y-4">
+            <TopComponent game={allMarketData?.[0]?.name} dateTime={dateTime} />
 
-            {allMarketData?.map((market, index) =>
-              market?.market_name == 'Match Odds' ? (
-                <MatchOddsFootball
-                  key={index}
-                  heading="Match Odds"
-                  data={market}
-                  fixtureEventName={fixtureEventName}
-                  placedBetWinLossDatas={placedBetWinLossDatas}
-                  competition_name={matchData?.competition_name}
-                  allMarketData={allMarketData}
-                />
-              ) : (
-                <MatchOddsFootball
-                  key={index}
-                  heading={market?.market_name?.toUpperCase()}
-                  data={market}
-                  fixtureEventName={fixtureEventName}
-                  type="under15"
-                  placedBetWinLossDatas={placedBetWinLossDatas}
-                  competition_name={matchData?.competition_name}
-                  allMarketData={allMarketData}
-                />
-              ),
-            )}
+            <div className="space-y-2">
+              <MatchOdd game="Match Odds" cashout="CashOut" />
+
+              {allMarketData?.map((market, index) =>
+                market?.market_name == 'Match Odds' ? (
+                  <MatchOddsFootball
+                    key={index}
+                    heading="Match Odds"
+                    data={market}
+                    fixtureEventName={fixtureEventName}
+                    placedBetWinLossDatas={placedBetWinLossDatas}
+                    competition_name={matchData?.competition_name}
+                    allMarketData={allMarketData}
+                  />
+                ) : (
+                  <MatchOddsFootball
+                    key={index}
+                    heading={market?.market_name?.toUpperCase()}
+                    data={market}
+                    fixtureEventName={fixtureEventName}
+                    type="under15"
+                    placedBetWinLossDatas={placedBetWinLossDatas}
+                    competition_name={matchData?.competition_name}
+                    allMarketData={allMarketData}
+                  />
+                ),
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <MatchOdd game={gamePredication.odd} />
+              <Prediction
+                minValue={0}
+                maxValue={1}
+                matchData={matchData}
+                data1="55"
+                data2="45"
+              />
+            </div>
+
+            {/* Premium Section */}
+            <Premium premiumData={premiumData} />
           </div>
 
-          <div className="space-y-2">
-            <MatchOdd game={gamePredication.odd} />
-            <Prediction
-              minValue={0}
-              maxValue={1}
-              matchData={matchData}
-              data1="55"
-              data2="45"
-            />
+          {/* Sessions Grid */}
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <MatchOdd game="sessions" />
+                <Sessions sessions={sessionsData} />
+              </div>
+              <div className="space-y-2">
+                <MatchOdd game="odds/even" />
+                <Sessions sessions={sessionsData} />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <MatchOdd game="w/p market" />
+                <Sessions sessions={sessionsDataXtra} />
+              </div>
+              <div className="space-y-2">
+                <MatchOdd game="xtra market" />
+                <Sessions sessions={sessionsData} />
+              </div>
+            </div>
           </div>
-
-          {/* Premium Section */}
-          <Premium premiumData={premiumData} />
         </div>
 
-        {/* Sessions Grid */}
-        <div className="grid grid-cols-2 gap-4 mt-4">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <MatchOdd game="sessions" />
-              <Sessions sessions={sessionsData} />
-            </div>
-            <div className="space-y-2">
-              <MatchOdd game="odds/even" />
-              <Sessions sessions={sessionsData} />
-            </div>
+        {/* Side Panel - 40% width */}
+        <div className="w-[30%] p-2 hidden md:block">
+          <div className=" w-full">
+            <RightTopComponent stream="Live Match" live="live stream started" />
           </div>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <MatchOdd game="w/p market" />
-              <Sessions sessions={sessionsDataXtra} />
-            </div>
-            <div className="space-y-2">
-              <MatchOdd game="xtra market" />
-              <Sessions sessions={sessionsData} />
-            </div>
+          <div className=" w-full mt-2">
+            <RightTopComponent stream="Place Bet" />
+            <BetSlip />
+          </div>
+          <div className=" w-full mt-2">
+            <RightTopComponent stream="My Bet" />
           </div>
         </div>
       </div>
-
-      {/* Side Panel - 40% width */}
-      <div className="w-[30%] p-2 hidden md:block">
-        <div className=" w-full">
-          <RightTopComponent stream="Live Match" live="live stream started" />
-        </div>
-        <div className=" w-full mt-2">
-          <RightTopComponent stream="Place Bet" />
-          <BetSlip />
-        </div>
-        <div className=" w-full mt-2">
-          <RightTopComponent stream="My Bet" />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

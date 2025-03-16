@@ -129,13 +129,13 @@ const SecondComponent = () => {
               <button
                 key={item.id}
                 onClick={() => navigate(item.path)}
-                className={`px-4 py-2 font-bold text-xl flex items-center h-full transition-colors ${
+                className={`px-4 py-2 font-bold text-16 flex items-center h-full transition-colors ${
                   location.pathname === item.path
                     ? 'bg-black text-white'
                     : 'text-white hover:bg-purple-700'
                 }`}
               >
-                {item.name}
+                {item?.name?.toUpperCase()}
               </button>
             ))}
           </div>
@@ -149,36 +149,34 @@ const SecondComponent = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLiveActive(!liveActive)}
-              className={`md:px-6 text-12 md:text-16 px-2 md:py-2 border border-black font-bold rounded-full flex items-center gap-2 transition-colors ${
+              className={`md:px-2 text-12 px-2  border border-black  rounded-full flex items-center gap-2 transition-colors ${
                 liveActive ? 'bg-green-500 text-white' : 'bg-white text-black'
               }`}
             >
               <span>{liveActive ? '+' : '-'}</span>
-              <span>Live</span>
+              <span>LIVE</span>
             </button>
 
             {/* Virtual Button */}
             <button
               onClick={() => setVirtualActive(!virtualActive)}
-              className={`md:px-6 text-12 md:text-16 px-2 md:py-2 border border-black rounded-full font-bold flex items-center gap-2 transition-colors ${
+              className={`md:px-2 text-12  px-2 border border-black rounded-full  flex items-center gap-2 transition-colors ${
                 virtualActive
                   ? 'bg-green-500 text-white'
                   : 'bg-white text-black'
               }`}
             >
               <span>{virtualActive ? '+' : '-'}</span>
-              <span>Virtual</span>
+              <span>VIRTUAL</span>
             </button>
           </div>
           {/* View By Dropdown */}
           <div className="relative flex items-center gap-2">
-            <span className="text-black font-bold text-12 md:text-16">
-              View By:
-            </span>
+            <span className="text-black font-medium text-12 ">View By:</span>
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="md:w-48 md:h-10 text-12 md:text-16  bg-black text-white rounded-md px-4 flex items-center justify-between"
+                className="md:w-32 md:h-7 text-12   bg-black text-white rounded-md px-4 flex items-center justify-between"
               >
                 <span className="uppercase">{selectedDropdown}</span>
                 <IoIosArrowDown
@@ -189,7 +187,7 @@ const SecondComponent = () => {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute top-full right-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md overflow-hidden">
+                <div className="absolute top-full right-0 md:w-32 bg-white border border-gray-200 shadow-lg rounded-md overflow-hidden">
                   {dropdownOptions.map((option) => (
                     <button
                       key={option}
@@ -197,7 +195,7 @@ const SecondComponent = () => {
                         setSelectedDropdown(option);
                         setDropdownOpen(false);
                       }}
-                      className="w-full px-4 py-2 text-left uppercase text-white bg-gray-500 transition-colors"
+                      className="w-full px-2  text-12 hover:bg-blue-600 hover:text-white text-left uppercase text-white bg-gray-500 transition-colors"
                     >
                       {option}
                     </button>

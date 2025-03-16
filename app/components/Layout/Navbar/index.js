@@ -345,7 +345,7 @@ const Navbar = () => {
               <button
                 key={index}
                 onClick={() => handleClick(item)}
-                className="relative text-white px-[1.5vw] text-[1.2vw] font-extrabold flex-1 text-center whitespace-nowrap transition-all ease-in-out
+                className="relative text-14 text-white px-[1.5vw]  font-extrabold flex-1 text-center whitespace-nowrap transition-all ease-in-out
 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:origin-center 
 hover:after:left-0 hover:after:w-full"
               >

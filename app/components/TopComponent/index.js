@@ -87,12 +87,12 @@ const TopComponent = () => {
             {/* Add a wrapper with overflow settings */}
             <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               {/* Remove right padding from flex container to show last element */}
-              <div className="flex gap-2 pb-8 min-w-min">
+              <div className="flex gap-2 pb-2 min-w-min">
                 {items.map((item, index) => (
                   <button
                     key={index}
                     onClick={() => navigate(item.path)}
-                    className="flex items-center gap-2 text-white font-bold text-lg px-4 py-2 bg-purple-600 rounded-md whitespace-nowrap hover:bg-purple-700 transition-colors"
+                    className="flex items-center gap-2 text-white font-bold text-16 px-4 py-2 bg-purple-600 rounded-md whitespace-nowrap hover:bg-purple-700 transition-colors"
                   >
                     <motion.span
                       className="flex items-center gap-2"
