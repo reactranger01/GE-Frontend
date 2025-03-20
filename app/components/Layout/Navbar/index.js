@@ -106,19 +106,22 @@ const Navbar = () => {
               />
             </div>
             <div className="flex  flex-col items-end">
-              <div className="flex items-center gap-1">
-                <img
-                  src="/images/landmark-icon.webp"
-                  alt=""
-                  className="object-contain cursor-pointer w-[18px]"
-                />
-                <p>
-                  {' '}
-                  {numberWithCommas(
-                    userInfo?.balance - Math.abs(userInfo?.exposureAmount) || 0,
-                  )}
-                </p>
-              </div>
+              {isLogin && (
+                <div className="flex items-center gap-1">
+                  <img
+                    src="/images/landmark-icon.webp"
+                    alt=""
+                    className="object-contain cursor-pointer w-[18px]"
+                  />
+                  <p>
+                    {' '}
+                    {numberWithCommas(
+                      userInfo?.balance - Math.abs(userInfo?.exposureAmount) ||
+                        0,
+                    )}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center gap-1">
                 {isLogin ? (
                   <>
@@ -158,7 +161,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center justify-between w-full gap-2 ">
             <Link
-              to="/deposit"
+              to="https://api.whatsapp.com/send?phone=9669024735"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center gap-2 justify-center bg-green-600 text-white px-[1vw] py-[0.5vw] rounded border border-white text-[13px] hover:bg-green-700 whitespace-nowrap"
@@ -172,7 +175,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/withdraw"
+              to="https://api.whatsapp.com/send?phone=9669024735"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center gap-2 justify-center bg-red-600 text-white px-[1vw] py-[0.5vw] rounded border border-white text-[13px] hover:bg-red-700 whitespace-nowrap"

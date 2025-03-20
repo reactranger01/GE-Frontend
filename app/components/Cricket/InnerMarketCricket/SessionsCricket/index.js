@@ -9,7 +9,6 @@ const SessionsCricket = ({ data, matchDetails }) => {
   const dispatch = useDispatch();
   const inplay = data?.inplay;
   let minLimitOdds, maxLimitOdds;
-  console.log(data, 'dataaaaaaaaaaa');
   if (inplay) {
     minLimitOdds = matchDetails?.inPlayFancyMinLimit;
     maxLimitOdds = matchDetails?.inPlayFancyMaxLimit;
@@ -17,7 +16,6 @@ const SessionsCricket = ({ data, matchDetails }) => {
     minLimitOdds = matchDetails?.offPlayFancyMinLimit;
     maxLimitOdds = matchDetails?.offPlayFancyMaxLimit;
   }
-  console.log(matchDetails, 'matchDetails');
   const addToBetPlace = async (
     selectionId,
     runnerName,

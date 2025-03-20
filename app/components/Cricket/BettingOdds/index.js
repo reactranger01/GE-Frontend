@@ -2,8 +2,11 @@ import { BiTrophy } from 'react-icons/bi';
 import { MdSportsCricket } from 'react-icons/md';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
+  const bets = useSelector((state) => state.bet.selectedBet);
+  console.log(bets, 'betss');
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid md:grid-cols-10 grid-cols-9 md:gap-0.5">
@@ -26,139 +29,142 @@ const BettingOdds = ({ minValue, maxValue, matchData, addToBetPlace }) => {
         </div>
         {/* Match Data */}
         {matchData?.map((team, index) => (
-          <React.Fragment key={index}>
-            <div
-              className={`md:col-span-4 col-span-3 md:max-w-none py-1 px-2 border-y border-[#aaa] md:border-none ${
-                index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-50'
-              }`}
-            >
-              <span className="text-[#000000ff] font-bold text-12 md:text-14 capitalize">
-                {team?.runnerName || team?.RunnerName}
-              </span>
-            </div>
-            {/* 1 backPrice3 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
-                  team?.backPrice3 || team?.BackPrice3,
-                  'BACK',
-                );
-              }}
-              className="bg-[#73bcf0ff]  flex-center flex-col border border-[#aaa] md:border-none "
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.backPrice3 || team?.BackPrice3 || '-'}
+          <>
+            <React.Fragment key={index}>
+              <div
+                className={`md:col-span-4 col-span-3 md:max-w-none py-1 px-2 border-y border-[#aaa] md:border-none ${
+                  index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-50'
+                }`}
+              >
+                <span className="text-[#000000ff] font-bold text-12 md:text-14 capitalize">
+                  {team?.runnerName || team?.RunnerName}
+                </span>
               </div>
-              <div className="text-center md:text-sm text-12 text-[#000000]">
-                {team?.backsize3 || team?.backSize3 || team?.BackSize3 || 0}
-              </div>
-            </button>
-            {/* 2 backPrice2 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
-                  team?.backPrice2 || team?.BackPrice2,
-                  'BACK',
-                );
-              }}
-              className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.backPrice2 || team?.BackPrice2 || '-'}
-              </div>
+              {/* 1 backPrice3 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
+                    team?.backPrice3 || team?.BackPrice3,
+                    'BACK',
+                  );
+                }}
+                className="bg-[#73bcf0ff]  flex-center flex-col border border-[#aaa] md:border-none "
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.backPrice3 || team?.BackPrice3 || '-'}
+                </div>
+                <div className="text-center md:text-sm text-12 text-[#000000]">
+                  {team?.backsize3 || team?.backSize3 || team?.BackSize3 || 0}
+                </div>
+              </button>
+              {/* 2 backPrice2 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
+                    team?.backPrice2 || team?.BackPrice2,
+                    'BACK',
+                  );
+                }}
+                className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.backPrice2 || team?.BackPrice2 || '-'}
+                </div>
 
-              <div className="text-center text-sm text-[#000000]">
-                {team?.backsize2 || team?.backSize2 || team?.BackSize2 || 0}
-              </div>
-            </button>
-            {/* 3 backPrice1 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
+                <div className="text-center text-sm text-[#000000]">
+                  {team?.backsize2 || team?.backSize2 || team?.BackSize2 || 0}
+                </div>
+              </button>
+              {/* 3 backPrice1 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
 
-                  team?.backPrice1 || team?.BackPrice1,
-                  'BACK',
-                );
-              }}
-              className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.backPrice1 || team?.BackPrice1 || '-'}
-              </div>
+                    team?.backPrice1 || team?.BackPrice1,
+                    'BACK',
+                  );
+                }}
+                className="bg-[#73bcf0ff] flex-center flex-col border border-[#aaa] md:border-none"
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.backPrice1 || team?.BackPrice1 || '-'}
+                </div>
 
-              <div className="text-center md:text-sm text-12 text-[#000000]">
-                {team?.backsize1 || team?.backSize1 || team?.BackSize1 || 0}
-              </div>
-            </button>
+                <div className="text-center md:text-sm text-12 text-[#000000]">
+                  {team?.backsize1 || team?.backSize1 || team?.BackSize1 || 0}
+                </div>
+              </button>
 
-            {/* 1 layPrice1 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
+              {/* 1 layPrice1 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
 
-                  team?.layPrice1 || team?.LayPrice1,
-                  'LAY',
-                );
-              }}
-              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.layPrice1 || team?.LayPrice1 || '-'}
-              </div>
-              <div className="text-center md:text-sm text-12 text-[#000000]">
-                {team?.laysize1 || team?.laySize1 || team?.LaySize1 || 0}
-              </div>
-            </button>
-            {/* 2 layPrice2 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
+                    team?.layPrice1 || team?.LayPrice1,
+                    'LAY',
+                  );
+                }}
+                className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.layPrice1 || team?.LayPrice1 || '-'}
+                </div>
+                <div className="text-center md:text-sm text-12 text-[#000000]">
+                  {team?.laysize1 || team?.laySize1 || team?.LaySize1 || 0}
+                </div>
+              </button>
+              {/* 2 layPrice2 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
 
-                  team?.layPrice2 || team?.LayPrice2,
-                  'LAY',
-                );
-              }}
-              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.layPrice2 || team?.LayPrice2 || '-'}
-              </div>
-              <div className="text-center md:text-sm text-12 text-[#000000]">
-                {team?.laysize2 || team?.laySize2 || team?.LaySize2 || 0}
-              </div>
-            </button>
-            {/* 3 layPrice3 */}
-            <button
-              onClick={async () => {
-                await addToBetPlace(
-                  team?.selectionId || team?.SelectionId,
-                  team?.runnerName || team?.RunnerName,
+                    team?.layPrice2 || team?.LayPrice2,
+                    'LAY',
+                  );
+                }}
+                className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.layPrice2 || team?.LayPrice2 || '-'}
+                </div>
+                <div className="text-center md:text-sm text-12 text-[#000000]">
+                  {team?.laysize2 || team?.laySize2 || team?.LaySize2 || 0}
+                </div>
+              </button>
+              {/* 3 layPrice3 */}
+              <button
+                onClick={async () => {
+                  await addToBetPlace(
+                    team?.selectionId || team?.SelectionId,
+                    team?.runnerName || team?.RunnerName,
 
-                  team?.layPrice3 || team?.LayPrice3,
-                  'LAY',
-                );
-              }}
-              className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
-            >
-              <div className="text-center font-bold text-[#000000ff]">
-                {team?.layPrice3 || team?.LayPrice3 || '-'}
-              </div>
+                    team?.layPrice3 || team?.LayPrice3,
+                    'LAY',
+                  );
+                }}
+                className="bg-[#faaabbff] flex-center flex-col border border-[#aaa] md:border-none"
+              >
+                <div className="text-center font-bold text-[#000000ff]">
+                  {team?.layPrice3 || team?.LayPrice3 || '-'}
+                </div>
 
-              <div className="text-center md:text-sm text-12 text-[#000000]">
-                {team?.laysize3 || team?.laySize3 || team?.LaySize3 || 0}
-              </div>
-            </button>
-          </React.Fragment>
+                <div className="text-center md:text-sm text-12 text-[#000000]">
+                  {team?.laysize3 || team?.laySize3 || team?.LaySize3 || 0}
+                </div>
+              </button>
+            </React.Fragment>
+            <div className="col-span-9">{/* <BetSlip /> */}</div>
+          </>
         ))}
       </div>
 

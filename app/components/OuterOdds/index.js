@@ -71,7 +71,7 @@ const OuterOdds = ({ data, sport }) => {
         <div className="col-span-2 grid grid-cols-2 md:h-full cursor-pointer">
           {data?.runners?.[0]?.backPrice1 ? (
             <button
-              className="bg-[#73bcf0] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#73bcf0] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   if (isLogin) {
               //     addToBetPlace(
@@ -102,7 +102,7 @@ const OuterOdds = ({ data, sport }) => {
           )}
           {data?.runners?.[0]?.layPrice1 ? (
             <button
-              className="bg-[#faaabb] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#faaabb] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   isLogin
               //     ? addToBetPlace(
@@ -133,7 +133,7 @@ const OuterOdds = ({ data, sport }) => {
         <div className="col-span-2 grid grid-cols-2 cursor-pointer h-full">
           {data?.runners?.[2]?.backPrice1 ? (
             <button
-              className="bg-[#73bcf0] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#73bcf0] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   isLogin
               //     ? addToBetPlace(
@@ -162,7 +162,7 @@ const OuterOdds = ({ data, sport }) => {
           )}
           {data?.runners?.[2]?.layPrice1 ? (
             <button
-              className="bg-[#faaabb] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#faaabb] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   isLogin
               //     ? addToBetPlace(
@@ -193,7 +193,7 @@ const OuterOdds = ({ data, sport }) => {
         <div className="col-span-2 grid grid-cols-2 cursor-pointer h-full">
           {data?.runners?.[1]?.backPrice1 ? (
             <button
-              className="bg-[#73bcf0] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#73bcf0] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   isLogin
               //     ? addToBetPlace(
@@ -222,7 +222,7 @@ const OuterOdds = ({ data, sport }) => {
           )}
           {data?.runners?.[1]?.layPrice1 ? (
             <button
-              className="bg-[#faaabb] px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
+              className="bg-[#faaabb] cursor-default px-4 md:py-1 h-fit md:h-auto text-center text-14 font-semibold  text-black"
               // onClick={() => {
               //   isLogin
               //     ? addToBetPlace(

@@ -4,7 +4,6 @@ import Prediction from '@/components/Cricket/Predication';
 import Premium from '@/components/Cricket/Premium';
 import TopComponent from '@/components/Cricket/TopComponent';
 import Sessions from '@/components/Cricket/Sessions';
-import RightTopComponent from '@/components/Cricket/RightTopComponent';
 import {
   BetSlip,
   BookmakersCricket,
@@ -139,7 +138,6 @@ const CricketMarket = () => {
   const dateTime = dayjs(oddsData?.matchDateTime).format(
     'MMMM DD YYYY - hh:mm:a',
   );
-
   return (
     <>
       {!loaderOneTime && <Loading />}
@@ -173,18 +171,20 @@ const CricketMarket = () => {
                 />
               </div>
             )}
-            <div className="space-y-2">
-              <MatchOdd game="Sessions" cashout="CashOut" />
-              {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
-              <SessionsCricket
-                sessionBooksetClcuData={sessionBooksetClcuData}
-                data={sessionData}
-                matchName={matchData?.name}
-                particularMatchData={particularMatchData}
-                competition_name={matchData?.competition_name}
-                matchDetails={oddsData}
-              />
-            </div>
+            {sessionData && (
+              <div className="space-y-2">
+                <MatchOdd game="Sessions" cashout="CashOut" />
+                {/* <BettingOdds minValue={100} maxValue={2000} matchData={matchData} /> */}
+                <SessionsCricket
+                  sessionBooksetClcuData={sessionBooksetClcuData}
+                  data={sessionData}
+                  matchName={matchData?.name}
+                  particularMatchData={particularMatchData}
+                  competition_name={matchData?.competition_name}
+                  matchDetails={oddsData}
+                />
+              </div>
+            )}
 
             <div className="space-y-2">
               <MatchOdd game={gamePredication.odd} />
@@ -227,17 +227,8 @@ const CricketMarket = () => {
         </div>
 
         {/* Side Panel - 40% width */}
-        <div className="w-[30%] p-2 hidden md:block">
-          <div className=" w-full">
-            <RightTopComponent stream="Live Match" live="live stream started" />
-          </div>
-          <div className=" w-full mt-2">
-            <RightTopComponent stream="Place Bet" />
-            <BetSlip />
-          </div>
-          <div className=" w-full mt-2">
-            <RightTopComponent stream="My Bet" />
-          </div>
+        <div className="w-[30%] hidden pt-2 pl-1 md:block">
+          <BetSlip />
         </div>
       </div>
     </>

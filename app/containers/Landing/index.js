@@ -3,7 +3,7 @@ import SecondComponent from '@/components/SecondComponent';
 import TopComponent from '@/components/TopComponent';
 import { reactIcons } from '@/utils/icons';
 import React, { useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 function Landing() {
   const [showSports, setShowSports] = useState(true);
@@ -28,11 +28,23 @@ function Landing() {
         <div className="w-[15vw] lg:block flex-shrink-0 bg-[#CCCCCC] hidden">
           <div className="bg-[#008000] flex items-center gap-2 py-2 px-2 mb-[1px]">
             <img src="/images/depositImg.webp" className="w-6" alt="" />
-            <p className="text-14">Deposit</p>
+            <Link
+              to="https://api.whatsapp.com/send?phone=9669024735"
+              target="_blank"
+              className="text-14"
+            >
+              Deposit
+            </Link>
           </div>
           <div className="bg-[#FF0000] flex items-center gap-2 py-2 px-2 mb-[1px]">
             <img src="/images/withdrawImg.webp" className="w-6" alt="" />
-            <p className="text-14">Withdraw</p>
+            <Link
+              to="https://api.whatsapp.com/send?phone=9669024735"
+              target="_blank"
+              className="text-14"
+            >
+              Withdraw
+            </Link>
           </div>
           <div className="bg-black flex items-center justify-between  gap-2 py-2 px-2 mb-[1px]">
             <p className="text-14 font-semibold ">Others</p>
@@ -49,7 +61,7 @@ function Landing() {
           </div>
           {showSports && <LeftSidebar />}
         </div>
-        <div className="w-full lg:w-[85vw] bg-white h-full md:p-2 ">
+        <div className="w-full lg:w-[85vw] bg-white h-full md:p-1 ">
           {!isMarketPage && (
             <>
               <TopComponent />

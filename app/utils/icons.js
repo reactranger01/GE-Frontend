@@ -123,9 +123,15 @@ import { FaKey } from 'react-icons/fa';
 import { FaSignInAlt } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+import { FaAngleDown } from 'react-icons/fa';
+import { FaAngleUp } from 'react-icons/fa';
 
 export const reactIcons = {
+  faAngleUp: <FaAngleUp />,
+  faAngleDown: <FaAngleDown />,
   faUser: <FaUserAlt />,
+  faTimes: <FaTimes />,
   faSearch: <FaSearch />,
   faHome: <FaHome />,
   faSignin: <FaSignInAlt />,

@@ -61,7 +61,6 @@ const BookmakersCricket = ({ data, matchDetails }) => {
       toast.error('Market not available');
     }
   };
-  console.log(data['0']?.runners, 'data.runners');
   return (
     <div>
       <BettingOdds
